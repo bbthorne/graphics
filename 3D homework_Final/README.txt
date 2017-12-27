@@ -1,20 +1,17 @@
 Ben Thorne
-Graphics Homework 2: 3D Homework
-8/11/17
+Graphics Homework 4: 3D Game
+13/12/17
 
-Here is the list of completed features:
-Avatar
-    Move in direction the heli is pointing: "I"
-    Rotate: "J"
-    Move Up: "K"
-    Move Down: "L"
-The Matrix Revolutions
-Ground Zero
-Sunshine
-Highlander
-Keep Watching
-Dead Solid Perfect (Marble)
-Spotlight
-Shining
-Tracking
-Pitch Black
+Controls:
+I - move forward
+J - rotate clockwise
+H - rotate counterclockwise
+K - move up
+L - move down
+P (hold) - pick up a slowpoke / change arrow destination to box. releases
+           slowpoke when P is released (w. gravity)
+
+When P not pressed, arrow points towards an endangered slowpoke.
+
+Bring all of the slowpokes back to Devang to win! The arrow disappears when all 
+slowpokes have been found. (Check your console for a message from Devang...)
