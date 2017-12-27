@@ -1,0 +1,37 @@
+Shader.source[document.currentScript.src.split('js/shaders/')[1]] = `
+
+attribute vec3 vertexPosition;
+attribute vec2 vertexTexCoord;
+attribute vec3 vertexNormal;
+
+uniform mat4 viewProjMatrix
+uniform mat4 modelMatrix
+uniform mat4 normalMat;
+
+varying vec3 worldNormal;
+varying vec4 worldPos;
+
+void main(){
+    gl_Position = viewProjMatrix * modelMatrix * vec4(vertexPosition, 1.0);
+    vec4 vertPos4 = modelMatrix * vec4(vertexPosition, 1.0);
+    worldPos = vertPos4 / vertPos4.w;
+    worldNormal = vec3(normalMat * vec4(inputNormal, 0.0));
+}
+
+`;
+
+attribute vec3 inputPosition;
+attribute vec2 inputTexCoord;
+attribute vec3 inputNormal;
+
+uniform mat4 projection, modelview, normalMat;
+
+varying vec3 normalInterp;
+varying vec3 vertPos;
+
+void main(){
+    gl_Position = projection * modelview * vec4(inputPosition, 1.0);
+    vec4 vertPos4 = modelview * vec4(inputPosition, 1.0);
+    vertPos = vec3(vertPos4) / vertPos4.w;
+    normalInterp = vec3(normalMat * vec4(inputNormal, 0.0));
+}
