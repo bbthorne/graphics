@@ -1,0 +1,24 @@
+Shader.source[document.currentScript.src.split('js/shaders/')[1]] = `
+    precision highp float;
+    uniform sampler2D probeTexture;
+
+    varying vec4 worldPos;
+    varying vec3 worldNormal;
+    varying vec2 texCoord;
+    varying vec3 rayDir;
+    uniform vec3 eyePos;
+
+    void main(void) {
+        vec3 lightDirection = vec3(1,1,1);
+        vec3 viewDir = normalize(worldPos.xyz - eyePos);
+        vec3 normal = normalize(worldNormal);
+        float dotProd = dot(normal, lightDirection);
+        vec3 reflectDir = rayDir;                   \\reflect(-viewDir, normal);
+
+        vec3 m = normalize(viewDir + reflectDir);
+        vec2 m2 = vec2(m.x, -m.y) / 2.0 + vec2(0.5, 0.5);
+
+        gl_FragColor = texture2D(probeTexture, m2);
+    }
+
+`;
